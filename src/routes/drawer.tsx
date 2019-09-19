@@ -623,6 +623,7 @@ export function ResponsiveDrawer(props: IProps) {
       {...props}
       projectplans={plans.filter(p => related(p, 'project') === project)}
       planColumn={true}
+      projectView={true}
     />
   );
   components[slug(t.plans)] = (

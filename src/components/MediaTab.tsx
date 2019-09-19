@@ -186,6 +186,7 @@ interface IProps
   auth: Auth;
   projectplans: Plan[];
   planColumn?: boolean;
+  projectView: boolean;
 }
 
 export function MediaTab(props: IProps) {
@@ -206,6 +207,7 @@ export function MediaTab(props: IProps) {
     auth,
     projectplans,
     planColumn,
+    projectView,
   } = props;
   const classes = useStyles();
   const [plan, setPlan] = useGlobal('plan');
@@ -326,14 +328,14 @@ export function MediaTab(props: IProps) {
       if (defaultHiddenColumnNames.length > 0)
         //assume planName is only one
         defaultHiddenColumnNames.pop();
-    } else if (projectplans.length === 1) {
+    } else if (!projectView && projectplans.length === 1) {
       if (plan === '') {
         setPlan(projectplans[0].id); //set the global plan
       }
       defaultHiddenColumnNames.push('planName');
     }
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  }, [projectplans, plan, planColumn]);
+  }, [projectplans, plan, planColumn, projectView]);
 
   useEffect(() => {
     setData(

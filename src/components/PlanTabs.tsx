@@ -113,6 +113,7 @@ const ScrollableTabsButtonAuto = (props: IProps) => {
           <MediaTab
             {...props}
             projectplans={plans.filter(p => p.id === plan)}
+            projectView={false}
           />
         </TabContainer>
       )}
