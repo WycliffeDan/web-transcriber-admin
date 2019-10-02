@@ -1708,5 +1708,17 @@
             <target/>
          </segment>
       </unit>
+      <unit id="myTask.todo">
+         <segment>
+            <source>To Do</source>
+            <target/>
+         </segment>
+      </unit>
+      <unit id="myTask.history">
+         <segment>
+            <source>History</source>
+            <target/>
+         </segment>
+      </unit>
    </file>
 </xliff>

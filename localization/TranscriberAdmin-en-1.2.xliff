@@ -1994,6 +1994,20 @@
 					<context context-type="sourcefile">MediaUpload.tsx</context>
 				</context-group>
 			</trans-unit>
+			<trans-unit id="myTask.todo">
+				<source>To Do</source>
+				<target/>
+				<context-group>
+					<context context-type="sourcefile">MyTaskTabs.tsx</context>
+				</context-group>
+			</trans-unit>
+			<trans-unit id="myTask.history">
+				<source>History</source>
+				<target/>
+				<context-group>
+					<context context-type="sourcefile">MyTaskTabs.tsx</context>
+				</context-group>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

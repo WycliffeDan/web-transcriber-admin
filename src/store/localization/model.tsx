@@ -378,6 +378,11 @@ export interface IMediaUploadStrings extends Localize.LocalizedStringsMethods {
     "upload": string;
 };
 
+export interface IMyTaskStrings extends Localize.LocalizedStringsMethods {
+    "todo": string;
+    "history": string;
+};
+
 export interface ILocalizedStrings {
 	loaded: boolean;
 	lang: string;
@@ -412,5 +417,6 @@ export interface ILocalizedStrings {
 	invitationTable: IInvitationTableStrings;
 	orgSettings: IOrgSettingsStrings;
 	mediaUpload: IMediaUploadStrings;
+	myTask: IMyTaskStrings;
 	[key: string]: any;
 };

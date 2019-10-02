@@ -56,6 +56,7 @@ import OrgSettings from '../components/OrgSettings';
 import GroupTabs from '../components/GroupTabs';
 import PlanTable from '../components/PlanTable';
 import PlanTabs from '../components/PlanTabs';
+import MyTaskTabs from '../components/MyTaskTabs';
 import ProjectSettings from '../components/ProjectSettings';
 import MediaTab from '../components/MediaTab';
 import GroupSettings from '../components/GroupSettings';
@@ -424,6 +425,17 @@ export function ResponsiveDrawer(props: IProps) {
             groupPart
         );
         setPlan('');
+      } else if (choice === slug(t.myTasks)) {
+        history.push(
+          '/main/' +
+            orgId +
+            '/' +
+            slug(content) +
+            '/' +
+            projId +
+            '/' +
+            tab.toString()
+        );
       } else if (choice !== slug(t.plans) || !plan) {
         history.push('/main/' + orgId + '/' + slug(choice) + '/' + projId);
         if (choice !== slug(t.media)) {
@@ -497,6 +509,10 @@ export function ResponsiveDrawer(props: IProps) {
       if (parts.length > base + 5 && group !== groupId) {
         setGroup(groupId);
       }
+    } else if (urlChoice === slug(t.myTasks)) {
+      if (parts.length > base + 4 && tab.toString() !== parts[base + 4]) {
+        setTab(parseInt(parts[base + 4]));
+      }
     }
   }
 
@@ -544,7 +560,7 @@ export function ResponsiveDrawer(props: IProps) {
                 onClick={checkSavedEv(() => handleChoice(text))}
               >
                 <ListItemIcon>
-                  {index === 0 && API_CONFIG.isApp ? (
+                  {index === 0 && !API_CONFIG.isApp ? (
                     <GroupIcon />
                   ) : (
                     <OrganizationIcon />
@@ -664,7 +680,9 @@ export function ResponsiveDrawer(props: IProps) {
   components['group'] = <GroupSettings {...props} />;
   components[''] = API_CONFIG.isApp ? 'User Report' : <Visualize {...props} />;
   components['none'] = <></>;
-  components[slug(t.myTasks)] = 'My Tasks';
+  components[slug(t.myTasks)] = (
+    <MyTaskTabs {...props} setChanged={setChanged} checkSaved={checkSavedFn} />
+  );
   components[slug(t.allTasks)] = 'All Tasks';
 
   return (
